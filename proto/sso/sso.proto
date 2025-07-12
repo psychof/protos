@@ -10,9 +10,10 @@ service Auth {
 }
 
 message RegisterRequest {
-    string user_login = 1;
-    string user_username = 2;
-    string user_password = 3;
+    string user_email = 1;
+    string user_login = 2;
+    string user_username = 3;
+    string user_password = 4;
 }
 
 message RegisterResponse {

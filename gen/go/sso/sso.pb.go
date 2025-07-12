@@ -23,9 +23,10 @@ const (
 
 type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserLogin     string                 `protobuf:"bytes,1,opt,name=user_login,json=userLogin,proto3" json:"user_login,omitempty"`
-	UserUsername  string                 `protobuf:"bytes,2,opt,name=user_username,json=userUsername,proto3" json:"user_username,omitempty"`
-	UserPassword  string                 `protobuf:"bytes,3,opt,name=user_password,json=userPassword,proto3" json:"user_password,omitempty"`
+	UserEmail     string                 `protobuf:"bytes,1,opt,name=user_email,json=userEmail,proto3" json:"user_email,omitempty"`
+	UserLogin     string                 `protobuf:"bytes,2,opt,name=user_login,json=userLogin,proto3" json:"user_login,omitempty"`
+	UserUsername  string                 `protobuf:"bytes,3,opt,name=user_username,json=userUsername,proto3" json:"user_username,omitempty"`
+	UserPassword  string                 `protobuf:"bytes,4,opt,name=user_password,json=userPassword,proto3" json:"user_password,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -58,6 +59,13 @@ func (x *RegisterRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RegisterRequest.ProtoReflect.Descriptor instead.
 func (*RegisterRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *RegisterRequest) GetUserEmail() string {
+	if x != nil {
+		return x.UserEmail
+	}
+	return ""
 }
 
 func (x *RegisterRequest) GetUserLogin() string {
@@ -233,12 +241,14 @@ var File_sso_sso_proto protoreflect.FileDescriptor
 
 const file_sso_sso_proto_rawDesc = "" +
 	"\n" +
-	"\rsso/sso.proto\x12\x04auth\"z\n" +
+	"\rsso/sso.proto\x12\x04auth\"\x99\x01\n" +
 	"\x0fRegisterRequest\x12\x1d\n" +
 	"\n" +
-	"user_login\x18\x01 \x01(\tR\tuserLogin\x12#\n" +
-	"\ruser_username\x18\x02 \x01(\tR\fuserUsername\x12#\n" +
-	"\ruser_password\x18\x03 \x01(\tR\fuserPassword\"+\n" +
+	"user_email\x18\x01 \x01(\tR\tuserEmail\x12\x1d\n" +
+	"\n" +
+	"user_login\x18\x02 \x01(\tR\tuserLogin\x12#\n" +
+	"\ruser_username\x18\x03 \x01(\tR\fuserUsername\x12#\n" +
+	"\ruser_password\x18\x04 \x01(\tR\fuserPassword\"+\n" +
 	"\x10RegisterResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"i\n" +
 	"\fLoginRequest\x12\x1d\n" +
