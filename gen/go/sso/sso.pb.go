@@ -135,7 +135,7 @@ func (x *RegisterResponse) GetUserId() int64 {
 
 type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserLemail    string                 `protobuf:"bytes,1,opt,name=user_lemail,json=userLemail,proto3" json:"user_lemail,omitempty"`
+	UserEmail     string                 `protobuf:"bytes,1,opt,name=user_email,json=userEmail,proto3" json:"user_email,omitempty"`
 	UserPassword  string                 `protobuf:"bytes,2,opt,name=user_password,json=userPassword,proto3" json:"user_password,omitempty"`
 	AppId         int32                  `protobuf:"varint,3,opt,name=app_id,json=appId,proto3" json:"app_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -172,9 +172,9 @@ func (*LoginRequest) Descriptor() ([]byte, []int) {
 	return file_sso_sso_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *LoginRequest) GetUserLemail() string {
+func (x *LoginRequest) GetUserEmail() string {
 	if x != nil {
-		return x.UserLemail
+		return x.UserEmail
 	}
 	return ""
 }
@@ -250,10 +250,10 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\ruser_username\x18\x03 \x01(\tR\fuserUsername\x12#\n" +
 	"\ruser_password\x18\x04 \x01(\tR\fuserPassword\"+\n" +
 	"\x10RegisterResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\"k\n" +
-	"\fLoginRequest\x12\x1f\n" +
-	"\vuser_lemail\x18\x01 \x01(\tR\n" +
-	"userLemail\x12#\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\"i\n" +
+	"\fLoginRequest\x12\x1d\n" +
+	"\n" +
+	"user_email\x18\x01 \x01(\tR\tuserEmail\x12#\n" +
 	"\ruser_password\x18\x02 \x01(\tR\fuserPassword\x12\x15\n" +
 	"\x06app_id\x18\x03 \x01(\x05R\x05appId\"%\n" +
 	"\rLoginResponse\x12\x14\n" +
