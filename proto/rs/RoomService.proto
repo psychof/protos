@@ -32,8 +32,6 @@ message DeleteRoomRequest {
 
 message CreateRoomResponse {
     int64 room_id = 1;
-    string room_name = 2;
-    AccessType access_type = 3;
 }
 
 message DeleteRoomResponse {
