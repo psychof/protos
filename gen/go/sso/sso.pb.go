@@ -25,8 +25,8 @@ type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserEmail     string                 `protobuf:"bytes,1,opt,name=user_email,json=userEmail,proto3" json:"user_email,omitempty"`
 	UserLogin     string                 `protobuf:"bytes,2,opt,name=user_login,json=userLogin,proto3" json:"user_login,omitempty"`
-	UserUsername  string                 `protobuf:"bytes,3,opt,name=user_username,json=userUsername,proto3" json:"user_username,omitempty"`
-	UserPassword  string                 `protobuf:"bytes,4,opt,name=user_password,json=userPassword,proto3" json:"user_password,omitempty"`
+	UserPassword  string                 `protobuf:"bytes,3,opt,name=user_password,json=userPassword,proto3" json:"user_password,omitempty"`
+	UserName      string                 `protobuf:"bytes,4,opt,name=user_name,json=userName,proto3" json:"user_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -75,16 +75,16 @@ func (x *RegisterRequest) GetUserLogin() string {
 	return ""
 }
 
-func (x *RegisterRequest) GetUserUsername() string {
+func (x *RegisterRequest) GetUserPassword() string {
 	if x != nil {
-		return x.UserUsername
+		return x.UserPassword
 	}
 	return ""
 }
 
-func (x *RegisterRequest) GetUserPassword() string {
+func (x *RegisterRequest) GetUserName() string {
 	if x != nil {
-		return x.UserPassword
+		return x.UserName
 	}
 	return ""
 }
@@ -241,14 +241,14 @@ var File_sso_sso_proto protoreflect.FileDescriptor
 
 const file_sso_sso_proto_rawDesc = "" +
 	"\n" +
-	"\rsso/sso.proto\x12\x04auth\"\x99\x01\n" +
+	"\rsso/sso.proto\x12\x04auth\"\x91\x01\n" +
 	"\x0fRegisterRequest\x12\x1d\n" +
 	"\n" +
 	"user_email\x18\x01 \x01(\tR\tuserEmail\x12\x1d\n" +
 	"\n" +
 	"user_login\x18\x02 \x01(\tR\tuserLogin\x12#\n" +
-	"\ruser_username\x18\x03 \x01(\tR\fuserUsername\x12#\n" +
-	"\ruser_password\x18\x04 \x01(\tR\fuserPassword\"+\n" +
+	"\ruser_password\x18\x03 \x01(\tR\fuserPassword\x12\x1b\n" +
+	"\tuser_name\x18\x04 \x01(\tR\buserName\"+\n" +
 	"\x10RegisterResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\"i\n" +
 	"\fLoginRequest\x12\x1d\n" +
