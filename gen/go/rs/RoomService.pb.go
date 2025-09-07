@@ -80,7 +80,7 @@ type CreateRoomRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RoomName      string                 `protobuf:"bytes,1,opt,name=room_name,json=roomName,proto3" json:"room_name,omitempty"`
 	AccessType    AccessType             `protobuf:"varint,2,opt,name=access_type,json=accessType,proto3,enum=RoomService.AccessType" json:"access_type,omitempty"`
-	OwnerId       int64                  `protobuf:"varint,3,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
+	UserToken     string                 `protobuf:"bytes,3,opt,name=user_token,json=userToken,proto3" json:"user_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -129,17 +129,17 @@ func (x *CreateRoomRequest) GetAccessType() AccessType {
 	return AccessType_ACCESS_TYPE_UNSPECIFIED
 }
 
-func (x *CreateRoomRequest) GetOwnerId() int64 {
+func (x *CreateRoomRequest) GetUserToken() string {
 	if x != nil {
-		return x.OwnerId
+		return x.UserToken
 	}
-	return 0
+	return ""
 }
 
 type DeleteRoomRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RoomId        int64                  `protobuf:"varint,1,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	UserId        int64                  `protobuf:"varint,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserToken     int64                  `protobuf:"varint,2,opt,name=user_token,json=userToken,proto3" json:"user_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -181,9 +181,9 @@ func (x *DeleteRoomRequest) GetRoomId() int64 {
 	return 0
 }
 
-func (x *DeleteRoomRequest) GetUserId() int64 {
+func (x *DeleteRoomRequest) GetUserToken() int64 {
 	if x != nil {
-		return x.UserId
+		return x.UserToken
 	}
 	return 0
 }
@@ -191,8 +191,6 @@ func (x *DeleteRoomRequest) GetUserId() int64 {
 type CreateRoomResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RoomId        int64                  `protobuf:"varint,1,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	RoomName      string                 `protobuf:"bytes,2,opt,name=room_name,json=roomName,proto3" json:"room_name,omitempty"`
-	AccessType    AccessType             `protobuf:"varint,3,opt,name=access_type,json=accessType,proto3,enum=RoomService.AccessType" json:"access_type,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -232,20 +230,6 @@ func (x *CreateRoomResponse) GetRoomId() int64 {
 		return x.RoomId
 	}
 	return 0
-}
-
-func (x *CreateRoomResponse) GetRoomName() string {
-	if x != nil {
-		return x.RoomName
-	}
-	return ""
-}
-
-func (x *CreateRoomResponse) GetAccessType() AccessType {
-	if x != nil {
-		return x.AccessType
-	}
-	return AccessType_ACCESS_TYPE_UNSPECIFIED
 }
 
 type DeleteRoomResponse struct {
@@ -296,20 +280,19 @@ var File_rs_RoomService_proto protoreflect.FileDescriptor
 
 const file_rs_RoomService_proto_rawDesc = "" +
 	"\n" +
-	"\x14rs/RoomService.proto\x12\vRoomService\"\x85\x01\n" +
+	"\x14rs/RoomService.proto\x12\vRoomService\"\x89\x01\n" +
 	"\x11CreateRoomRequest\x12\x1b\n" +
 	"\troom_name\x18\x01 \x01(\tR\broomName\x128\n" +
 	"\vaccess_type\x18\x02 \x01(\x0e2\x17.RoomService.AccessTypeR\n" +
-	"accessType\x12\x19\n" +
-	"\bowner_id\x18\x03 \x01(\x03R\aownerId\"E\n" +
+	"accessType\x12\x1d\n" +
+	"\n" +
+	"user_token\x18\x03 \x01(\tR\tuserToken\"K\n" +
 	"\x11DeleteRoomRequest\x12\x17\n" +
-	"\aroom_id\x18\x01 \x01(\x03R\x06roomId\x12\x17\n" +
-	"\auser_id\x18\x02 \x01(\x03R\x06userId\"\x84\x01\n" +
+	"\aroom_id\x18\x01 \x01(\x03R\x06roomId\x12\x1d\n" +
+	"\n" +
+	"user_token\x18\x02 \x01(\x03R\tuserToken\"-\n" +
 	"\x12CreateRoomResponse\x12\x17\n" +
-	"\aroom_id\x18\x01 \x01(\x03R\x06roomId\x12\x1b\n" +
-	"\troom_name\x18\x02 \x01(\tR\broomName\x128\n" +
-	"\vaccess_type\x18\x03 \x01(\x0e2\x17.RoomService.AccessTypeR\n" +
-	"accessType\"-\n" +
+	"\aroom_id\x18\x01 \x01(\x03R\x06roomId\"-\n" +
 	"\x12DeleteRoomResponse\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\x03R\x06roomId*k\n" +
 	"\n" +
@@ -350,16 +333,15 @@ var file_rs_RoomService_proto_goTypes = []any{
 }
 var file_rs_RoomService_proto_depIdxs = []int32{
 	0, // 0: RoomService.CreateRoomRequest.access_type:type_name -> RoomService.AccessType
-	0, // 1: RoomService.CreateRoomResponse.access_type:type_name -> RoomService.AccessType
-	1, // 2: RoomService.RoomService.CreateRoom:input_type -> RoomService.CreateRoomRequest
-	2, // 3: RoomService.RoomService.DeleteRoom:input_type -> RoomService.DeleteRoomRequest
-	3, // 4: RoomService.RoomService.CreateRoom:output_type -> RoomService.CreateRoomResponse
-	4, // 5: RoomService.RoomService.DeleteRoom:output_type -> RoomService.DeleteRoomResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	1, // 1: RoomService.RoomService.CreateRoom:input_type -> RoomService.CreateRoomRequest
+	2, // 2: RoomService.RoomService.DeleteRoom:input_type -> RoomService.DeleteRoomRequest
+	3, // 3: RoomService.RoomService.CreateRoom:output_type -> RoomService.CreateRoomResponse
+	4, // 4: RoomService.RoomService.DeleteRoom:output_type -> RoomService.DeleteRoomResponse
+	3, // [3:5] is the sub-list for method output_type
+	1, // [1:3] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_rs_RoomService_proto_init() }
