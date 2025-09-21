@@ -139,7 +139,7 @@ func (x *CreateRoomRequest) GetUserToken() string {
 type DeleteRoomRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RoomId        int64                  `protobuf:"varint,1,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	UserToken     int64                  `protobuf:"varint,2,opt,name=user_token,json=userToken,proto3" json:"user_token,omitempty"`
+	UserToken     string                 `protobuf:"bytes,2,opt,name=user_token,json=userToken,proto3" json:"user_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -181,11 +181,11 @@ func (x *DeleteRoomRequest) GetRoomId() int64 {
 	return 0
 }
 
-func (x *DeleteRoomRequest) GetUserToken() int64 {
+func (x *DeleteRoomRequest) GetUserToken() string {
 	if x != nil {
 		return x.UserToken
 	}
-	return 0
+	return ""
 }
 
 type CreateRoomResponse struct {
@@ -290,7 +290,7 @@ const file_rs_RoomService_proto_rawDesc = "" +
 	"\x11DeleteRoomRequest\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\x03R\x06roomId\x12\x1d\n" +
 	"\n" +
-	"user_token\x18\x02 \x01(\x03R\tuserToken\"-\n" +
+	"user_token\x18\x02 \x01(\tR\tuserToken\"-\n" +
 	"\x12CreateRoomResponse\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\x03R\x06roomId\"-\n" +
 	"\x12DeleteRoomResponse\x12\x17\n" +
