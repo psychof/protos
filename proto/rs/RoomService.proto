@@ -35,6 +35,6 @@ message CreateRoomResponse {
 }
 
 message DeleteRoomResponse {
-    int64 room_id = 1;
+    bool ok = 1;
 }
 
