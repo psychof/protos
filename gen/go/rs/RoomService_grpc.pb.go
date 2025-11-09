@@ -21,7 +21,6 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	RoomService_CreateRoom_FullMethodName = "/RoomService.RoomService/CreateRoom"
 	RoomService_DeleteRoom_FullMethodName = "/RoomService.RoomService/DeleteRoom"
-	RoomService_AppendUser_FullMethodName = "/RoomService.RoomService/AppendUser"
 )
 
 // RoomServiceClient is the client API for RoomService service.
@@ -30,7 +29,6 @@ const (
 type RoomServiceClient interface {
 	CreateRoom(ctx context.Context, in *CreateRoomRequest, opts ...grpc.CallOption) (*CreateRoomResponse, error)
 	DeleteRoom(ctx context.Context, in *DeleteRoomRequest, opts ...grpc.CallOption) (*DeleteRoomResponse, error)
-	AppendUser(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[AppendUserRequest, AppendUserResponse], error)
 }
 
 type roomServiceClient struct {
@@ -61,26 +59,12 @@ func (c *roomServiceClient) DeleteRoom(ctx context.Context, in *DeleteRoomReques
 	return out, nil
 }
 
-func (c *roomServiceClient) AppendUser(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[AppendUserRequest, AppendUserResponse], error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &RoomService_ServiceDesc.Streams[0], RoomService_AppendUser_FullMethodName, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &grpc.GenericClientStream[AppendUserRequest, AppendUserResponse]{ClientStream: stream}
-	return x, nil
-}
-
-// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type RoomService_AppendUserClient = grpc.BidiStreamingClient[AppendUserRequest, AppendUserResponse]
-
 // RoomServiceServer is the server API for RoomService service.
 // All implementations must embed UnimplementedRoomServiceServer
 // for forward compatibility.
 type RoomServiceServer interface {
 	CreateRoom(context.Context, *CreateRoomRequest) (*CreateRoomResponse, error)
 	DeleteRoom(context.Context, *DeleteRoomRequest) (*DeleteRoomResponse, error)
-	AppendUser(grpc.BidiStreamingServer[AppendUserRequest, AppendUserResponse]) error
 	mustEmbedUnimplementedRoomServiceServer()
 }
 
@@ -96,9 +80,6 @@ func (UnimplementedRoomServiceServer) CreateRoom(context.Context, *CreateRoomReq
 }
 func (UnimplementedRoomServiceServer) DeleteRoom(context.Context, *DeleteRoomRequest) (*DeleteRoomResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRoom not implemented")
-}
-func (UnimplementedRoomServiceServer) AppendUser(grpc.BidiStreamingServer[AppendUserRequest, AppendUserResponse]) error {
-	return status.Errorf(codes.Unimplemented, "method AppendUser not implemented")
 }
 func (UnimplementedRoomServiceServer) mustEmbedUnimplementedRoomServiceServer() {}
 func (UnimplementedRoomServiceServer) testEmbeddedByValue()                     {}
@@ -157,13 +138,6 @@ func _RoomService_DeleteRoom_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RoomService_AppendUser_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(RoomServiceServer).AppendUser(&grpc.GenericServerStream[AppendUserRequest, AppendUserResponse]{ServerStream: stream})
-}
-
-// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type RoomService_AppendUserServer = grpc.BidiStreamingServer[AppendUserRequest, AppendUserResponse]
-
 // RoomService_ServiceDesc is the grpc.ServiceDesc for RoomService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -180,13 +154,6 @@ var RoomService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RoomService_DeleteRoom_Handler,
 		},
 	},
-	Streams: []grpc.StreamDesc{
-		{
-			StreamName:    "AppendUser",
-			Handler:       _RoomService_AppendUser_Handler,
-			ServerStreams: true,
-			ClientStreams: true,
-		},
-	},
+	Streams:  []grpc.StreamDesc{},
 	Metadata: "rs/RoomService.proto",
 }

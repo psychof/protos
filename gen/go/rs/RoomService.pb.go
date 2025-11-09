@@ -412,14 +412,12 @@ const file_rs_RoomService_proto_rawDesc = "" +
 	"\x06PUBLIC\x10\x01\x12\v\n" +
 	"\aPRIVATE\x10\x02\x12\x0f\n" +
 	"\vINVITE_ONLY\x10\x03\x12\x16\n" +
-	"\x12PASSWORD_PROTECTED\x10\x042\xfe\x01\n" +
+	"\x12PASSWORD_PROTECTED\x10\x042\xab\x01\n" +
 	"\vRoomService\x12M\n" +
 	"\n" +
 	"CreateRoom\x12\x1e.RoomService.CreateRoomRequest\x1a\x1f.RoomService.CreateRoomResponse\x12M\n" +
 	"\n" +
-	"DeleteRoom\x12\x1e.RoomService.DeleteRoomRequest\x1a\x1f.RoomService.DeleteRoomResponse\x12Q\n" +
-	"\n" +
-	"AppendUser\x12\x1e.RoomService.AppendUserRequest\x1a\x1f.RoomService.AppendUserResponse(\x010\x01B\x12Z\x10protos/gen/go/rsb\x06proto3"
+	"DeleteRoom\x12\x1e.RoomService.DeleteRoomRequest\x1a\x1f.RoomService.DeleteRoomResponseB\x12Z\x10protos/gen/go/rsb\x06proto3"
 
 var (
 	file_rs_RoomService_proto_rawDescOnce sync.Once
@@ -448,12 +446,10 @@ var file_rs_RoomService_proto_depIdxs = []int32{
 	0, // 0: RoomService.CreateRoomRequest.access_type:type_name -> RoomService.AccessType
 	1, // 1: RoomService.RoomService.CreateRoom:input_type -> RoomService.CreateRoomRequest
 	2, // 2: RoomService.RoomService.DeleteRoom:input_type -> RoomService.DeleteRoomRequest
-	5, // 3: RoomService.RoomService.AppendUser:input_type -> RoomService.AppendUserRequest
-	3, // 4: RoomService.RoomService.CreateRoom:output_type -> RoomService.CreateRoomResponse
-	4, // 5: RoomService.RoomService.DeleteRoom:output_type -> RoomService.DeleteRoomResponse
-	6, // 6: RoomService.RoomService.AppendUser:output_type -> RoomService.AppendUserResponse
-	4, // [4:7] is the sub-list for method output_type
-	1, // [1:4] is the sub-list for method input_type
+	3, // 3: RoomService.RoomService.CreateRoom:output_type -> RoomService.CreateRoomResponse
+	4, // 4: RoomService.RoomService.DeleteRoom:output_type -> RoomService.DeleteRoomResponse
+	3, // [3:5] is the sub-list for method output_type
+	1, // [1:3] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
