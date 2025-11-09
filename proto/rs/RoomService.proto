@@ -16,7 +16,6 @@ enum AccessType {
 service RoomService {
    rpc CreateRoom (CreateRoomRequest) returns (CreateRoomResponse);
    rpc DeleteRoom (DeleteRoomRequest) returns (DeleteRoomResponse);
-   rpc AppendUser (AppendUserRequest) returns (AppendUserResponse);
 }
 
 message CreateRoomRequest {
