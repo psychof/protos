@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package RoomService;
 
-option go_package = "rs.v1;rsv1";
+option go_package = "protos/gen/go/rs";
 
 enum AccessType {
     ACCESS_TYPE_UNSPECIFIED = 0;
@@ -15,7 +15,8 @@ enum AccessType {
 
 service RoomService {
    rpc CreateRoom (CreateRoomRequest) returns (CreateRoomResponse);
-   rpc DeleteRoom(DeleteRoomRequest) returns (DeleteRoomResponse);
+   rpc DeleteRoom (DeleteRoomRequest) returns (DeleteRoomResponse);
+   rpc AppendUser (stream AppendUserRequest) returns (stream AppendUserResponse);
 }
 
 message CreateRoomRequest {
@@ -29,7 +30,6 @@ message DeleteRoomRequest {
     string user_token = 2;
 }
 
-
 message CreateRoomResponse {
     int64 room_id = 1;
 }
@@ -37,4 +37,15 @@ message CreateRoomResponse {
 message DeleteRoomResponse {
     bool ok = 1;
 }
+
+message AppendUserRequest {
+    int64 sender_id = 1;
+    int64 RoomId = 2;
+    int64 recepient_Id = 3;
+}
+
+message  AppendUserResponse {
+    bool ok = 1;
+}
+
 
