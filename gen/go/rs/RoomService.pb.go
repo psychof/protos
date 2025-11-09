@@ -4,7 +4,7 @@
 // 	protoc        v6.31.1
 // source: rs/RoomService.proto
 
-package rsv1
+package rs
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -276,6 +276,110 @@ func (x *DeleteRoomResponse) GetOk() bool {
 	return false
 }
 
+type AppendUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	SenderId      int64                  `protobuf:"varint,1,opt,name=sender_id,json=senderId,proto3" json:"sender_id,omitempty"`
+	RoomId        int64                  `protobuf:"varint,2,opt,name=RoomId,proto3" json:"RoomId,omitempty"`
+	Recepient_Id  int64                  `protobuf:"varint,3,opt,name=recepient_Id,json=recepientId,proto3" json:"recepient_Id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AppendUserRequest) Reset() {
+	*x = AppendUserRequest{}
+	mi := &file_rs_RoomService_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AppendUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AppendUserRequest) ProtoMessage() {}
+
+func (x *AppendUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_rs_RoomService_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AppendUserRequest.ProtoReflect.Descriptor instead.
+func (*AppendUserRequest) Descriptor() ([]byte, []int) {
+	return file_rs_RoomService_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *AppendUserRequest) GetSenderId() int64 {
+	if x != nil {
+		return x.SenderId
+	}
+	return 0
+}
+
+func (x *AppendUserRequest) GetRoomId() int64 {
+	if x != nil {
+		return x.RoomId
+	}
+	return 0
+}
+
+func (x *AppendUserRequest) GetRecepient_Id() int64 {
+	if x != nil {
+		return x.Recepient_Id
+	}
+	return 0
+}
+
+type AppendUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Ok            bool                   `protobuf:"varint,1,opt,name=ok,proto3" json:"ok,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AppendUserResponse) Reset() {
+	*x = AppendUserResponse{}
+	mi := &file_rs_RoomService_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AppendUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AppendUserResponse) ProtoMessage() {}
+
+func (x *AppendUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_rs_RoomService_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AppendUserResponse.ProtoReflect.Descriptor instead.
+func (*AppendUserResponse) Descriptor() ([]byte, []int) {
+	return file_rs_RoomService_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *AppendUserResponse) GetOk() bool {
+	if x != nil {
+		return x.Ok
+	}
+	return false
+}
+
 var File_rs_RoomService_proto protoreflect.FileDescriptor
 
 const file_rs_RoomService_proto_rawDesc = "" +
@@ -294,6 +398,12 @@ const file_rs_RoomService_proto_rawDesc = "" +
 	"\x12CreateRoomResponse\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\x03R\x06roomId\"$\n" +
 	"\x12DeleteRoomResponse\x12\x0e\n" +
+	"\x02ok\x18\x01 \x01(\bR\x02ok\"k\n" +
+	"\x11AppendUserRequest\x12\x1b\n" +
+	"\tsender_id\x18\x01 \x01(\x03R\bsenderId\x12\x16\n" +
+	"\x06RoomId\x18\x02 \x01(\x03R\x06RoomId\x12!\n" +
+	"\frecepient_Id\x18\x03 \x01(\x03R\vrecepientId\"$\n" +
+	"\x12AppendUserResponse\x12\x0e\n" +
 	"\x02ok\x18\x01 \x01(\bR\x02ok*k\n" +
 	"\n" +
 	"AccessType\x12\x1b\n" +
@@ -302,13 +412,14 @@ const file_rs_RoomService_proto_rawDesc = "" +
 	"\x06PUBLIC\x10\x01\x12\v\n" +
 	"\aPRIVATE\x10\x02\x12\x0f\n" +
 	"\vINVITE_ONLY\x10\x03\x12\x16\n" +
-	"\x12PASSWORD_PROTECTED\x10\x042\xab\x01\n" +
+	"\x12PASSWORD_PROTECTED\x10\x042\xfe\x01\n" +
 	"\vRoomService\x12M\n" +
 	"\n" +
 	"CreateRoom\x12\x1e.RoomService.CreateRoomRequest\x1a\x1f.RoomService.CreateRoomResponse\x12M\n" +
 	"\n" +
-	"DeleteRoom\x12\x1e.RoomService.DeleteRoomRequest\x1a\x1f.RoomService.DeleteRoomResponseB\fZ\n" +
-	"rs.v1;rsv1b\x06proto3"
+	"DeleteRoom\x12\x1e.RoomService.DeleteRoomRequest\x1a\x1f.RoomService.DeleteRoomResponse\x12Q\n" +
+	"\n" +
+	"AppendUser\x12\x1e.RoomService.AppendUserRequest\x1a\x1f.RoomService.AppendUserResponse(\x010\x01B\x12Z\x10protos/gen/go/rsb\x06proto3"
 
 var (
 	file_rs_RoomService_proto_rawDescOnce sync.Once
@@ -323,22 +434,26 @@ func file_rs_RoomService_proto_rawDescGZIP() []byte {
 }
 
 var file_rs_RoomService_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_rs_RoomService_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_rs_RoomService_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_rs_RoomService_proto_goTypes = []any{
 	(AccessType)(0),            // 0: RoomService.AccessType
 	(*CreateRoomRequest)(nil),  // 1: RoomService.CreateRoomRequest
 	(*DeleteRoomRequest)(nil),  // 2: RoomService.DeleteRoomRequest
 	(*CreateRoomResponse)(nil), // 3: RoomService.CreateRoomResponse
 	(*DeleteRoomResponse)(nil), // 4: RoomService.DeleteRoomResponse
+	(*AppendUserRequest)(nil),  // 5: RoomService.AppendUserRequest
+	(*AppendUserResponse)(nil), // 6: RoomService.AppendUserResponse
 }
 var file_rs_RoomService_proto_depIdxs = []int32{
 	0, // 0: RoomService.CreateRoomRequest.access_type:type_name -> RoomService.AccessType
 	1, // 1: RoomService.RoomService.CreateRoom:input_type -> RoomService.CreateRoomRequest
 	2, // 2: RoomService.RoomService.DeleteRoom:input_type -> RoomService.DeleteRoomRequest
-	3, // 3: RoomService.RoomService.CreateRoom:output_type -> RoomService.CreateRoomResponse
-	4, // 4: RoomService.RoomService.DeleteRoom:output_type -> RoomService.DeleteRoomResponse
-	3, // [3:5] is the sub-list for method output_type
-	1, // [1:3] is the sub-list for method input_type
+	5, // 3: RoomService.RoomService.AppendUser:input_type -> RoomService.AppendUserRequest
+	3, // 4: RoomService.RoomService.CreateRoom:output_type -> RoomService.CreateRoomResponse
+	4, // 5: RoomService.RoomService.DeleteRoom:output_type -> RoomService.DeleteRoomResponse
+	6, // 6: RoomService.RoomService.AppendUser:output_type -> RoomService.AppendUserResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -355,7 +470,7 @@ func file_rs_RoomService_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_rs_RoomService_proto_rawDesc), len(file_rs_RoomService_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   4,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
