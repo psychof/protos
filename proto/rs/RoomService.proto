@@ -16,12 +16,12 @@ enum AccessType {
 service RoomService {
    rpc CreateRoom (CreateRoomRequest) returns (CreateRoomResponse);
    rpc DeleteRoom (DeleteRoomRequest) returns (DeleteRoomResponse);
-   rpc AppendUser (stream AppendUserRequest) returns (stream AppendUserResponse);
+   rpc AppendUser (AppendUserRequest) returns (AppendUserResponse);
 }
 
 message CreateRoomRequest {
     string room_name = 1;
-    AccessType access_type = 2;
+    AccessType access_type = 2 [default = PUBLIC];
     string user_token = 3;
 }
 
