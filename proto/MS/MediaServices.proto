@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package Media;
+
+option go_package = "prtos/go/gen/ms";
+
+
+service MediaServices {
+
+    rpc GetContentFromUrl (GetRequest) returns (GetResponse); //получени ссылки и сохраниение контента в бд
+    rpc StartStopPlaying (StartStopRequest) returns (StartStopResponse); //Отдаёт клиенту сыллку с таймкодом требуемого контента и запускает контент у всех клиентов в комноте
+    rpc Stream (stream StreamRequest) returns (stream StreamResponse); // Сервис который синхранизирует проигрователь между пользователями (отпровляет запрос администратору комноты каждую секунду и отпровдяте ответ всем пользователям в комноте)
+}
+
+enum Action {
+    START = 0;
+    STOP =  1;
+
+}
+
+message GetRequest {
+    string url = 1;
+    int64 room = 2;
+}
+
+message GetResponse {
+    bool ok = 1;
+}
+
+message StartStopRequest {
+    string  url = 1;
+    int64 room = 2;
+    Action action = 3;
+}
+
+message StartStopResponse {
+    string  url = 1;
+    int64 room = 2;
+    Action action = 3;
+}
+
+message StreamRequest {
+    repeated string TimeCode = 1; 
+}
+message StreamResponse {
+    repeated string TimeCode = 1; 
+}
