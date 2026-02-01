@@ -196,6 +196,7 @@ func (x *LoginRequest) GetAppId() int32 {
 type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	AccesToken    string                 `protobuf:"bytes,1,opt,name=acces_token,json=accesToken,proto3" json:"acces_token,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -233,6 +234,13 @@ func (*LoginResponse) Descriptor() ([]byte, []int) {
 func (x *LoginResponse) GetAccesToken() string {
 	if x != nil {
 		return x.AccesToken
+	}
+	return ""
+}
+
+func (x *LoginResponse) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
 	}
 	return ""
 }
@@ -351,10 +359,11 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\n" +
 	"user_email\x18\x01 \x01(\tR\tuserEmail\x12#\n" +
 	"\ruser_password\x18\x02 \x01(\tR\fuserPassword\x12\x15\n" +
-	"\x06app_id\x18\x03 \x01(\x05R\x05appId\"0\n" +
+	"\x06app_id\x18\x03 \x01(\x05R\x05appId\"U\n" +
 	"\rLoginResponse\x12\x1f\n" +
 	"\vacces_token\x18\x01 \x01(\tR\n" +
-	"accesToken\":\n" +
+	"accesToken\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\":\n" +
 	"\x13RefreshTokenRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\\\n" +
 	"\x14RefreshTokenResponse\x12#\n" +
