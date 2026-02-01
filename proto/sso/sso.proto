@@ -7,6 +7,7 @@ option go_package = "protos/gen/go/sso";
 service Auth {
     rpc Register (RegisterRequest) returns (RegisterResponse);
     rpc Login (LoginRequest) returns (LoginResponse);
+    rpc RefreshToken (RefreshTokenRequest) returns (RefreshTokenResponse);
 }
 
 message RegisterRequest {
@@ -27,5 +28,14 @@ message LoginRequest {
 }
 
 message LoginResponse {
-    string token = 1;
+    string acces_token = 1;
+}
+
+message RefreshTokenRequest {
+        string refresh_token = 1;
+}
+
+message RefreshTokenResponse{
+        string refresh_token = 1;
+        string acces_token = 2;
 }
