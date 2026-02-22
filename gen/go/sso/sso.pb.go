@@ -248,6 +248,7 @@ func (x *LoginResponse) GetRefreshToken() string {
 type RefreshTokenRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	UserId        int64                  `protobuf:"varint,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -287,6 +288,13 @@ func (x *RefreshTokenRequest) GetRefreshToken() string {
 		return x.RefreshToken
 	}
 	return ""
+}
+
+func (x *RefreshTokenRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
 }
 
 type RefreshTokenResponse struct {
@@ -363,9 +371,10 @@ const file_sso_sso_proto_rawDesc = "" +
 	"\rLoginResponse\x12\x1f\n" +
 	"\vacces_token\x18\x01 \x01(\tR\n" +
 	"accesToken\x12#\n" +
-	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\":\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"R\n" +
 	"\x13RefreshTokenRequest\x12#\n" +
-	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"\\\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\x12\x16\n" +
+	"\x06userId\x18\x02 \x01(\x03R\x06userId\"\\\n" +
 	"\x14RefreshTokenResponse\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\x12\x1f\n" +
 	"\vacces_token\x18\x02 \x01(\tR\n" +
