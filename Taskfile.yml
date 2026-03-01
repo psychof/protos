@@ -1,0 +1,7 @@
+version: "3"
+
+tasks:
+  gen:
+    cmds:
+     - powershell -Command "Remove-Item 'D:\go_project\NotesServices\protos\gen\go\sso\*' -Recurse -Force -ErrorAction SilentlyContinue"
+     - protoc -I proto proto/sso/*.proto --go_out=./gen/go/ --go_opt=paths=source_relative --go-grpc_out=./gen/go/ --go-grpc_opt=paths=source_relative

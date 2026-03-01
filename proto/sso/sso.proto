@@ -8,6 +8,7 @@ service Auth {
     rpc Register (RegisterRequest) returns (RegisterResponse);
     rpc Login (LoginRequest) returns (LoginResponse);
     rpc RefreshToken (RefreshTokenRequest) returns (RefreshTokenResponse);
+    rpc RegisterApp (RegistereAppRequest) returns (RegisterAppResponse);
 }
 
 message RegisterRequest {
@@ -40,4 +41,13 @@ message RefreshTokenRequest {
 message RefreshTokenResponse{
         string refresh_token = 1;
         string acces_token = 2;
+}
+
+message RegistereAppRequest{
+    string name = 1;
+    bytes secret = 2;
+}
+
+message RegisterAppResponse{
+    int64 app_id = 1;
 }
