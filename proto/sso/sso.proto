@@ -9,7 +9,7 @@ service Auth {
     rpc Login (LoginRequest) returns (LoginResponse);
     rpc RefreshToken (RefreshTokenRequest) returns (RefreshTokenResponse);
     rpc RegisterApp (RegistereAppRequest) returns (RegisterAppResponse);
-    rpc LogOut (LogOutRequest) returns (LogOutResponse);
+    rpc LogOut (LogoutRequest) returns (LogoutResponse);
 }
 
 message RegisterRequest {
@@ -54,10 +54,10 @@ message RegisterAppResponse{
     int64 app_id = 1;
 }
 
-message LogOutRequest{
+message LogoutRequest{
     string refresh_token = 1;
 }
 
-message LogOutResponse {
+message LogoutResponse {
     bool ok = 1;
 }
